@@ -152,7 +152,7 @@ if(isset($_POST["submit"])){
                 <div class="col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="auth-form-transparent text-left p-3">
                         <div class="brand-logo text-center">
-                            <img src="../image/jalegreatedealnav.png" alt="logo">
+                            <img src="../image/V&S.png" alt="logo">
                         </div>
                         <?php
                         if(isset($_SESSION['inscription'])){ // affiche un message si la session inscription est active, c'est à dire si l'utilisateur est redirigé vers cette page après savoir effectué son inscription
@@ -207,7 +207,7 @@ if(isset($_POST["submit"])){
                     </div>
                 </div>
                 <div class="col-lg-6 login-half-bg d-flex flex-row">
-                    <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2021 All rights reserved.</p>
+                    <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2024 All rights reserved.</p>
                 </div> <!-- footer présent sur toutes les pages -->
             </div>
         </div>

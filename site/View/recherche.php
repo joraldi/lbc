@@ -9,7 +9,7 @@ if(isset($_SESSION["search"])){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Recherche - Great Deal</title>
+    <title>Recherche - V&S</title>
     <?php include 'include/header.php'; ?>  <!-- header présent sur toutes les pages (connexion avec bootstrap) -->
 </head>
 <body style="background-color: #f2edf3">
@@ -45,11 +45,7 @@ if(isset($_SESSION["search"])){
                                                         <ul class="product-variation">
 
                                                             <span class="badge badge-pill badge-info"><?=$ligne['etat']?> &nbsp<i class="fa-solid fa-thumbs-up"></i></span>
-                                                            <?php if ($ligne["poche"]==1): ?>
-                                                                <span class="badge badge-pill badge-danger">Format poche &nbsp<i class="fa-solid fa-pen-nib"></i></span>
-                                                            <?php else: ?>
-                                                                <span class="badge badge-pill badge-danger">Format standard &nbsp<i class="fa-solid fa-pen-nib"></i></span>
-                                                            <?php endif; ?>
+                                                            
                                                             <!-- selon si c'est un format poche ou standard, un different bagde est mis -->
 
                                                             <?php if ($ligne["livraison"]==1): ?>

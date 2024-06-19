@@ -1,44 +1,39 @@
 <?php
 include 'include/element.php';
 
-if(isset($_POST["btn"])){ // si le bouton ets cliqué, les informations écrites dans le formulaire sont récupérées
- 
-    $titre= $_POST["titre"];
-    $vendeur=$uid;
-
-    $detail=$_POST["detail"];
-
-    $prix= $_POST["prix"];
-    $etat= $_POST["etat"];
-    $livraison= $_POST["livraison"];
-    $poche= $_POST["poche"];
-    $edition= $_POST["edition"];
-    $categorie= $_POST["categorie"];
+if (isset($_POST["btn"])) { // si le bouton est cliqué, les informations écrites dans le formulaire sont récupérées
+    $titre = $_POST["titre"];
+    $vendeur = $uid;
+    $detail = $_POST["detail"];
+    $prix = $_POST["prix"];
+    $etat = $_POST["etat"];
+    $livraison = $_POST["livraison"];
+    $categorie = $_POST["categorie"];
     $extensions = array('jpg', 'png', 'gif', 'jpeg', 'PNG');
 
-    if (isset($_FILES['photo']) && !$_FILES['photo']['error']) { //vérifie si le champs photo n'est pas vide 
+    if (isset($_FILES['photo']) && !$_FILES['photo']['error']) { // vérifie si le champ photo n'est pas vide 
         $fileInfo = pathinfo($_FILES['photo']['name']);
         if ($_FILES['photo']['size'] <= 2000000) {
             if (in_array($fileInfo['extension'], $extensions)) {
-                $chemin = "image/annonce/"."$titre".".png";
-                move_uploaded_file($_FILES['photo']['tmp_name'], '../image/annonce/'."$titre.png");
+                $chemin = "image/annonce/" . $titre . ".png";
+                move_uploaded_file($_FILES['photo']['tmp_name'], '../image/annonce/' . $titre . ".png");
                 echo 'Le fichier a été envoyé sur le serveur';
-                $time = time();
-                $req= $pdo->prepare("insert into annonce values (null,:titre,:vendeur,now(),:detail,:chemin,:categorie,:prix,:etat,0,:livraison,:poche,:edition,0,:time)"); //requête qui insert dans la bdd les infos saisies dans le formulaire
+
+                // Requête SQL avec spécification explicite des colonnes
+                $req = $pdo->prepare("INSERT INTO annonce (titre, vendeur, detail, chemin, categorie, prix, etat, livraison) VALUES (:titre, :vendeur, :detail, :chemin, :categorie, :prix, :etat, :livraison)");
+
                 $req->execute(array(
-                    "titre"=>$titre,
-                    "vendeur"=>$vendeur,
-                    "detail"=>$detail,
-                    "chemin"=>$chemin,
-                    "categorie"=>$categorie,
-                    "prix"=>$prix,
-                    "etat"=>$etat,
-                    "livraison"=>$livraison,
-                    "poche"=>$poche,
-                    "edition"=>$edition,
-                    "time"=>$time
+                    "titre" => $titre,
+                    "vendeur" => $vendeur,
+                    "detail" => $detail,
+                    "chemin" => $chemin,
+                    "categorie" => $categorie,
+                    "prix" => $prix,
+                    "etat" => $etat,
+                    "livraison" => $livraison,
                 ));
-                header("location:bravo.php");
+                header("location: bravo.php");
+                exit; // Assurez-vous de sortir après la redirection pour éviter toute exécution supplémentaire indésirable
 
             } else {
                 echo 'Ce type de fichier est interdit';
@@ -49,16 +44,16 @@ if(isset($_POST["btn"])){ // si le bouton ets cliqué, les informations écrites
     } else {
         echo 'Une erreur est survenue lors de l\'envoi du fichier';
     }
-
-
-
 }
+?>
+
+
 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Nouvelle annonce - Great Deal</title>
+    <title>Nouvelle annonce -V&S</title>
     <?php include 'include/header.php'; ?>  <!-- header présent sur toutes les pages (connexion avec bootstrap) -->
 </head>
 <body style="background-color: #f2edf3">
@@ -97,7 +92,7 @@ if(isset($_POST["btn"])){ // si le bouton ets cliqué, les informations écrites
                                     </div>
 
                                     <div class="mb-4">
-                                        <label class="form-label" for="etat">Selectionnez l'état de votre livre :</label>
+                                        <label class="form-label" for="etat">Selectionnez l'état de votre article :</label>
                                         <select class="form-select mb-3" name="etat">
                                             <option value="Neuf">Neuf</option>
                                             <option value="Très bon état">Très bon état</option>
@@ -109,27 +104,12 @@ if(isset($_POST["btn"])){ // si le bouton ets cliqué, les informations écrites
                                         <label class="form-label" for="livraison">Description :</label>
                                         <input type="text" name="detail" class="form-control form-control-lg" placeholder="Entrez la description:" />
                                     </div>
-                                    <div class="mb-4">
-                                        <label class="form-label">Séléctionnez l'éditeur:</label>
-                                        <select class="form-select mb-3" name="edition">
-                                            <?php
-                                            $req=$pdo->query("select * from edition");
-                                            $resultat=$req->fetchAll();
-                                            foreach($resultat as $edition){ ?>
-                                                <option value='<?= $edition["ide"] ?>'><?= $edition["nomEdition"] ?></option><br>";
-                                            <?php }
-                                            ?>
-                                        </select>
-                                    </div>
+                                    
                                     <div class="mb-4">
                                         <label class="form-label" for="prix">Prix:</label>
                                         <input type="number" name="prix" class="form-control form-control-lg" placeholder="Entrez le prix:" />
                                     </div>
-                                    <div class="mb-4">Poche:
-
-                                        <input type="radio" name="poche" value="1"required>Oui
-                                        <input type="radio" name="poche" value="0">Non
-                                    </div>
+                                    
                                     <div class="mb-4">Livraison:
 
                                         <input type="radio" name="livraison" value="1"required>Oui

@@ -48,8 +48,8 @@ if(isset($_POST["search"])){
     <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.php"><img style="height: 60px; width: 110px" src="../image/M&M.png" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.php"><img style="height: 60px; width: 120px" src="../image/jalegreatedealnavmini.png" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="index.php"><img style="height: 60px; width: 110px" src="../image/vs.png" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="index.php"><img style="height: 60px; width: 120px" src="../image/ja.png" alt="logo" /></a>
                 <!-- Logo jale great deal responsive -->
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -170,7 +170,7 @@ if(isset($_POST["search"])){
                 <li class="nav-item <?= $romanetranger ?>">
                     <a class="nav-link" href="categorie.php?idcategorie=5">
                         <i class="fa-solid fa-earth-europe mx-2"></i>
-                        <span class="menu-title">Beshka</span>
+                        <span class="menu-title">Bershka</span>
                     </a>
                 </li>
             </ul>
