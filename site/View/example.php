@@ -2,7 +2,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
     <title>Exemple V&S</title>
+=======
+    <title>Exemple - Stone Island</title>
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
     <?php include 'include/header.php'; ?>  <!-- header présent sur toutes les pages (connexion avec bootstrap) -->
 </head>
 <body style="background-color: #f2edf3">

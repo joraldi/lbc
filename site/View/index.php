@@ -17,7 +17,11 @@ if(isset($_POST["recherche"])){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
     <title>Accueil - S&V</title>
+=======
+    <title>Accueil - Stone Island</title>
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
     <?php include 'include/header.php'; ?>
 </head>
 <body style="background-color: #f2edf3">

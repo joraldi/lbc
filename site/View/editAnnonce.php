@@ -52,7 +52,11 @@ if(isset($_POST["edit"])){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
     <title>Modification annonce - V&S</title>
+=======
+    <title>Modification annonce - Stone Island</title>
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
     <?php include 'include/header.php'; ?>  <!-- header présent sur toutes les pages (connexion avec bootstrap) -->
 </head>
 <body style="background-color: #f2edf3">
@@ -118,10 +122,44 @@ if(isset($_POST["edit"])){
                                             ?>
                                         </select>
                                     </div>
+<<<<<<< HEAD
                 
                 
                                 
                                     <div class="form-group">
+=======
+                                    <div class="form-group">
+                                        <label for="titre" class="form-label">Edition</label>
+                                        <select class="form-control" name="edition">
+                                            <?php foreach ($pdo->query('SELECT * FROM edition') as $row) {
+                                                if ($row['ide'] == $annonce['edition']) {
+                                                    echo '<option value="' . $row['ide'] . '" selected>' . $row['nomEdition'] . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $row['ide'] . '">' . $row['nomEdition'] . '</option>';
+                                                }
+                                            }
+                                            // possibilité de changer l'edition
+                                            ?>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="titre" class="form-label">Poche</label>
+                                        <select class="form-control" name="poche">
+                                            <?php if ($annonce['poche'] == 1) {
+                                                echo '<option value="1" selected>Oui</option>';
+                                                echo '<option value="0">Non</option>';
+                                            } else {
+                                                echo '<option value="1">Oui</option>';
+                                                echo '<option value="0" selected>Non</option>';
+                                            }
+                                            ?>
+                                            <!-- possibilité de changer le format du livre  -->
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group">
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
                                         <label for="livraison">Livraison</label>
                                         <select class="form-control" name="livraison">
                                             <?php if ($annonce['livraison'] == 1) {

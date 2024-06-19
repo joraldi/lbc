@@ -1,6 +1,7 @@
 <?php
 include 'include/element.php';
 
+<<<<<<< HEAD
 if (isset($_POST["btn"])) { // si le bouton est cliqué, les informations écrites dans le formulaire sont récupérées
     $titre = $_POST["titre"];
     $vendeur = $uid;
@@ -34,6 +35,43 @@ if (isset($_POST["btn"])) { // si le bouton est cliqué, les informations écrit
                 ));
                 header("location: bravo.php");
                 exit; // Assurez-vous de sortir après la redirection pour éviter toute exécution supplémentaire indésirable
+=======
+if(isset($_POST["btn"])){ // si le bouton ets cliqué, les informations écrites dans le formulaire sont récupérées
+ 
+    $titre= $_POST["titre"];
+    $vendeur=$uid;
+
+    $detail=$_POST["detail"];
+
+    $prix= $_POST["prix"];
+    $etat= $_POST["etat"];
+    $livraison= $_POST["livraison"];
+    $categorie= $_POST["categorie"];
+    $extensions = array('jpg', 'png', 'gif', 'jpeg', 'PNG');
+
+    if (isset($_FILES['photo']) && !$_FILES['photo']['error']) { //vérifie si le champs photo n'est pas vide 
+        $fileInfo = pathinfo($_FILES['photo']['name']);
+        if ($_FILES['photo']['size'] <= 2000000) {
+            if (in_array($fileInfo['extension'], $extensions)) {
+                $chemin = "image/annonce/"."$titre".".png";
+                move_uploaded_file($_FILES['photo']['tmp_name'], '../image/annonce/'."$titre.png");
+                echo 'Le fichier a été envoyé sur le serveur';
+                $time = time();
+                $req= $pdo->prepare("insert into annonce values (null,:titre,:vendeur,now(),:detail,:chemin,:categorie,:prix,:etat,0,:livraison, 0, 0, 0, :time)"); //requête qui insert dans la bdd les infos saisies dans le formulaire
+                $req->execute(array(
+                    "titre"=>$titre,
+                    "vendeur"=>$vendeur,
+                    "detail"=>$detail,
+                    "chemin"=>$chemin,
+                    "categorie"=>$categorie,
+                    "prix"=>$prix,
+                    "etat"=>$etat,
+                    "livraison"=>$livraison,
+                    'time' => time()
+                    
+                ));
+                header("location:bravo.php");
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
 
             } else {
                 echo 'Ce type de fichier est interdit';
@@ -44,16 +82,27 @@ if (isset($_POST["btn"])) { // si le bouton est cliqué, les informations écrit
     } else {
         echo 'Une erreur est survenue lors de l\'envoi du fichier';
     }
+<<<<<<< HEAD
 }
 ?>
 
 
+=======
+
+
+
+}
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
     <title>Nouvelle annonce -V&S</title>
+=======
+    <title>Nouvelle annonce - Stone Island</title>
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
     <?php include 'include/header.php'; ?>  <!-- header présent sur toutes les pages (connexion avec bootstrap) -->
 </head>
 <body style="background-color: #f2edf3">
@@ -105,11 +154,19 @@ if (isset($_POST["btn"])) { // si le bouton est cliqué, les informations écrit
                                         <input type="text" name="detail" class="form-control form-control-lg" placeholder="Entrez la description:" />
                                     </div>
                                     
+<<<<<<< HEAD
+=======
+                                
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
                                     <div class="mb-4">
                                         <label class="form-label" for="prix">Prix:</label>
                                         <input type="number" name="prix" class="form-control form-control-lg" placeholder="Entrez le prix:" />
                                     </div>
+<<<<<<< HEAD
                                     
+=======
+                                   
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
                                     <div class="mb-4">Livraison:
 
                                         <input type="radio" name="livraison" value="1"required>Oui

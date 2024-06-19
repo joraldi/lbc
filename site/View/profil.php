@@ -109,7 +109,11 @@ if(isset($_POST["bout_mdp"])) // si le bouton est cliqué, les informations sais
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<<<<<<< HEAD
     <title>Profil - V&S</title>
+=======
+    <title>Profil - Great Deal</title>
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
     <?php include 'include/header.php'; ?>  <!-- header présent sur toutes les pages (connexion avec bootstrap) -->
 </head>
 <body style="background-color: #f2edf3">

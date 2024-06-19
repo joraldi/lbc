@@ -152,7 +152,11 @@ if(isset($_POST["submit"])){
                 <div class="col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="auth-form-transparent text-left p-3">
                         <div class="brand-logo text-center">
+<<<<<<< HEAD
                             <img src="../image/V&S.png" alt="logo">
+=======
+                            <img src="../image/jalegreatedealnav.png" alt="logo">
+>>>>>>> e4f12a7ec719cba099a4f74a54e5963beb2b368f
                         </div>
                         <?php
                         if(isset($_SESSION['inscription'])){ // affiche un message si la session inscription est active, c'est à dire si l'utilisateur est redirigé vers cette page après savoir effectué son inscription
